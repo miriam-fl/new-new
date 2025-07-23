@@ -14,10 +14,10 @@ function App() {
     setMessages([...messages, { sender: "user", text: userMessage }]);
     setInput("");
     try {
-      const response = await axios.post("/api/chat", { message: userMessage });
+      const response = await axios.post("http://127.0.0.1:8000/chat", { message: userMessage });
       setMessages((msgs) => [
         ...msgs,
-        { sender: "bot", text: response.data.reply || "(No reply)" }
+        { sender: "bot", text: response.data.response || "(No reply)" }
       ]);
     } catch (error) {
       setMessages((msgs) => [
